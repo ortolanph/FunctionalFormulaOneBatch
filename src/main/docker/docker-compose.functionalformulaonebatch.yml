@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  postgres:
+    container_name: formulaone
+    image: postgres:latest
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "functionalformulaone"
+    networks:
+      - internal
+  functional-formula-one-batch:
+    container_name: functional-formula-one-batch
+    image: 'functional-formula-one-batch:latest'
+    environment:
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://formulaone:5432/functionalformulaone
+    networks:
+      - internal
+    depends_on:
+      - postgres
+networks:
+  internal:
