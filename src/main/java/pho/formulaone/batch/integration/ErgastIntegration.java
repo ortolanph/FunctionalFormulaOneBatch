@@ -14,7 +14,6 @@ public class ErgastIntegration {
     @Autowired
     private Retrofit ergastAPI;
 
-
     public ErgastResult getRaceInformation(int season, int race) throws IOException {
         ErgastAPI api = ergastAPI.create(ErgastAPI.class);
         Call<ErgastResult> data = api.getSeasonInformation(season, race);
