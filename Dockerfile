@@ -1,5 +1,5 @@
-FROM openjdk:8-jdk-alpine
-RUN addgroup -S spring && adduser -S spring -G spring
+FROM openjdk:11
+RUN addgroup --system spring && adduser --system spring --ingroup spring
 USER spring:spring
 
 VOLUME /tmp
